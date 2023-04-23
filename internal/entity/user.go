@@ -30,6 +30,7 @@ var (
 	ErrInvalidRole      = errors.New("role must be either admin or operator")
 	ErrNameRequired     = errors.New("name is required")
 	ErrInvalidCPF       = errors.New("invalid CPF")
+	ErrUserExists       = errors.New("user already exists")
 )
 
 func NewUser(name, cpf, password string, role Role) (*User, error) {
@@ -37,7 +38,7 @@ func NewUser(name, cpf, password string, role Role) (*User, error) {
 		return nil, ErrNameRequired
 	}
 
-	if !documents.IsCPF(cpf) {
+	if cpf == "" || !documents.IsCPF(cpf) {
 		return nil, ErrInvalidCPF
 	}
 

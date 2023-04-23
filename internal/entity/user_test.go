@@ -38,6 +38,11 @@ func TestNewUserWithInvalidCPF(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Nil(t, user)
 	assert.Equal(t, ErrInvalidCPF, err)
+
+	user, err = NewUser("César", "", "test123", "admin")
+	assert.NotNil(t, err)
+	assert.Nil(t, user)
+	assert.Equal(t, ErrInvalidCPF, err)
 }
 
 func TestNewUserWithInvalidRole(t *testing.T) {
