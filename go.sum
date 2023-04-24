@@ -163,8 +163,6 @@ github.com/mattn/go-sqlite3 v1.14.15 h1:vfoHhTN1af61xCRSWzFIWzx2YskyMTwHLrExkBOj
 github.com/mattn/go-sqlite3 v1.14.15/go.mod h1:2eHXhiwb8IkHr+BDWZGa96P6+rkvnG63S2DGjv9HUNg=
 github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=
 github.com/mitchellh/mapstructure v1.5.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
-github.com/oaraujocesar/go-api v0.0.0-20230422144427-b6f8cfd5c3b3 h1:dfN4FNSX/0HM7pBLfGIFH0fPHPo2lS/l1MPfdP9Ud9U=
-github.com/oaraujocesar/go-api v0.0.0-20230422144427-b6f8cfd5c3b3/go.mod h1:Nh2DvUeBZnPlTjcfIEdD5MU4dBdbY4inHFiJ1UAnPIU=
 github.com/paemuri/brdoc v1.1.2 h1:jl3opOVRVvVr+ubc9DpzENe/d1uuYLNac4V1h7Jul/c=
 github.com/paemuri/brdoc v1.1.2/go.mod h1:M0bbCy1qPGG0xou2ahCNXAntlkZ3Tl0w7NlC1v5fiZc=
 github.com/pelletier/go-toml/v2 v2.0.6 h1:nrzqCb7j9cDFj2coyLNLaZuJTLjWjlaz6nvTvIwycIU=
