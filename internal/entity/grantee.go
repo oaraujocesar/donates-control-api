@@ -37,7 +37,6 @@ var (
 	ErrBirthdayRequired     = errors.New("birthday is required")
 	ErrInvalidMaritalStatus = errors.New("invalid marital status")
 	ErrOccupationRequired   = errors.New("occupation is required")
-	ErrFamilyCountRequired  = errors.New("family count is required")
 	ErrPhoneNumberRequired  = errors.New("phone number is required")
 	ErrNISRequired          = errors.New("NIS is required")
 	ErrAddressRequired      = errors.New("address is required")
@@ -63,10 +62,6 @@ func NewGrantee(grantee *Grantee) (*Grantee, error) {
 
 	if grantee.Occupation == "" {
 		return nil, ErrOccupationRequired
-	}
-
-	if grantee.FamilyCount == 0 {
-		return nil, ErrFamilyCountRequired
 	}
 
 	if grantee.PhoneNumber == "" {
