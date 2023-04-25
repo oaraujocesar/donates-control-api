@@ -36,6 +36,8 @@ type Grantee struct {
 var (
 	ErrInvalidMaritalStatus = errors.New("invalid marital status")
 	ErrAddressRequired      = errors.New("address is required")
+	ErrGranteeExists        = errors.New("grantee already exists")
+	ErrGranteeNotFound      = errors.New("grantee not found")
 )
 
 func NewGrantee(grantee *Grantee) (*Grantee, error) {
