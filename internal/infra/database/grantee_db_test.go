@@ -168,7 +168,7 @@ func TestDeleteGrantee(t *testing.T) {
 	assert.Equal(t, entity.ErrGranteeNotFound.Error(), err.Error())
 }
 
-func TestDeleteNotExistantGrantee(t *testing.T) {
+func TestDeleteNotExistentGrantee(t *testing.T) {
 	db, err := createInMemoryDatabase(t, &entity.Grantee{})
 	assert.Nil(t, err)
 
@@ -208,7 +208,7 @@ func TestDeliverToGrantee(t *testing.T) {
 	assert.True(t, granteeFound.Delivered)
 }
 
-func TestDeliverToNonExistantGrantee(t *testing.T) {
+func TestDeliverToNonExistentGrantee(t *testing.T) {
 	db, err := createInMemoryDatabase(t, &entity.Grantee{})
 	assert.Nil(t, err)
 
