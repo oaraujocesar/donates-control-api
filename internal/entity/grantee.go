@@ -21,26 +21,21 @@ type Grantee struct {
 	ID            id.ID         `json:"id"`
 	Name          string        `json:"name"`
 	CPF           string        `json:"cpf"`
-	Birthday      string        `json:"birthday"`
-	MaritalStatus MaritalStatus `json:"marital_status"`
-	Occupation    string        `json:"occupation"`
-	FamilyCount   int           `json:"family_count"`
-	PhoneNumber   string        `json:"phone_number"`
-	NIS           string        `json:"nis"`
+	Birthday      string        `json:"birthday,omitempty"`
+	MaritalStatus MaritalStatus `json:"marital_status,omitempty"`
+	Occupation    string        `json:"occupation,omitempty"`
+	FamilyCount   int           `json:"family_count,omitempty"`
+	PhoneNumber   string        `json:"phone_number,omitempty"`
+	NIS           string        `json:"nis,omitempty"`
 	Address       string        `json:"address"`
-	Neighborhood  string        `json:"neighborhood"`
-	IsRuralArea   bool          `json:"is_rural_area"`
-	Delivered     bool          `json:"delivered"`
+	Neighborhood  string        `json:"neighborhood,omitempty"`
+	IsRuralArea   bool          `json:"is_rural_area,omitempty"`
+	Delivered     bool          `json:"delivered,omitempty"`
 }
 
 var (
-	ErrBirthdayRequired     = errors.New("birthday is required")
 	ErrInvalidMaritalStatus = errors.New("invalid marital status")
-	ErrOccupationRequired   = errors.New("occupation is required")
-	ErrPhoneNumberRequired  = errors.New("phone number is required")
-	ErrNISRequired          = errors.New("NIS is required")
 	ErrAddressRequired      = errors.New("address is required")
-	ErrNeighborhoodRequired = errors.New("neighborhood is required")
 )
 
 func NewGrantee(grantee *Grantee) (*Grantee, error) {
@@ -52,32 +47,12 @@ func NewGrantee(grantee *Grantee) (*Grantee, error) {
 		return nil, ErrInvalidCPF
 	}
 
-	if grantee.Birthday == "" {
-		return nil, ErrBirthdayRequired
-	}
-
 	if grantee.MaritalStatus != Single && grantee.MaritalStatus != Married && grantee.MaritalStatus != Divorced && grantee.MaritalStatus != Widowed && grantee.MaritalStatus != StableUnion {
 		return nil, ErrInvalidMaritalStatus
 	}
 
-	if grantee.Occupation == "" {
-		return nil, ErrOccupationRequired
-	}
-
-	if grantee.PhoneNumber == "" {
-		return nil, ErrPhoneNumberRequired
-	}
-
-	if grantee.NIS == "" {
-		return nil, ErrNISRequired
-	}
-
 	if grantee.Address == "" {
 		return nil, ErrAddressRequired
-	}
-
-	if grantee.Neighborhood == "" {
-		return nil, ErrNeighborhoodRequired
 	}
 
 	return &Grantee{

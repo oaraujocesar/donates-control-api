@@ -123,90 +123,6 @@ func TestNewGranteeWithoutName(t *testing.T) {
 	assert.Equal(t, ErrNameRequired, err)
 }
 
-func TestNewGranteeWithoutBirthday(t *testing.T) {
-	grantee, err := NewGrantee(&Grantee{
-		Name:          "Caio",
-		CPF:           "929.500.850-24",
-		Birthday:      "",
-		MaritalStatus: MaritalStatus("solteiro"),
-		Occupation:    "Desempregado",
-		FamilyCount:   0,
-		PhoneNumber:   "(81)123456789",
-		NIS:           "1234567891011",
-		Address:       "Rua dos Bobos, n 0",
-		Neighborhood:  "País das Maravilhas",
-		IsRuralArea:   false,
-		Delivered:     false,
-	})
-
-	assert.NotNil(t, err)
-	assert.Nil(t, grantee)
-	assert.Equal(t, ErrBirthdayRequired, err)
-}
-
-func TestNewGranteeWithoutOccupation(t *testing.T) {
-	grantee, err := NewGrantee(&Grantee{
-		Name:          "Caio",
-		CPF:           "929.500.850-24",
-		Birthday:      "07/08/97",
-		MaritalStatus: MaritalStatus("solteiro"),
-		Occupation:    "",
-		FamilyCount:   0,
-		PhoneNumber:   "(81)123456789",
-		NIS:           "1234567891011",
-		Address:       "Rua dos Bobos, n 0",
-		Neighborhood:  "País das Maravilhas",
-		IsRuralArea:   false,
-		Delivered:     false,
-	})
-
-	assert.NotNil(t, err)
-	assert.Nil(t, grantee)
-	assert.Equal(t, ErrOccupationRequired, err)
-}
-
-func TestNewGranteeWithoutPhoneNumber(t *testing.T) {
-	grantee, err := NewGrantee(&Grantee{
-		Name:          "Caio",
-		CPF:           "929.500.850-24",
-		Birthday:      "07/08/97",
-		MaritalStatus: MaritalStatus("solteiro"),
-		Occupation:    "Desempregado",
-		FamilyCount:   0,
-		PhoneNumber:   "",
-		NIS:           "1234567891011",
-		Address:       "Rua dos Bobos, n 0",
-		Neighborhood:  "País das Maravilhas",
-		IsRuralArea:   false,
-		Delivered:     false,
-	})
-
-	assert.NotNil(t, err)
-	assert.Nil(t, grantee)
-	assert.Equal(t, ErrPhoneNumberRequired, err)
-}
-
-func TestNewGranteeWithoutNIS(t *testing.T) {
-	grantee, err := NewGrantee(&Grantee{
-		Name:          "Caio",
-		CPF:           "929.500.850-24",
-		Birthday:      "07/08/97",
-		MaritalStatus: MaritalStatus("solteiro"),
-		Occupation:    "Desempregado",
-		FamilyCount:   0,
-		PhoneNumber:   "(81)123456789",
-		NIS:           "",
-		Address:       "Rua dos Bobos, n 0",
-		Neighborhood:  "País das Maravilhas",
-		IsRuralArea:   false,
-		Delivered:     false,
-	})
-
-	assert.NotNil(t, err)
-	assert.Nil(t, grantee)
-	assert.Equal(t, ErrNISRequired, err)
-}
-
 func TestNewGranteeWithoutAddress(t *testing.T) {
 	grantee, err := NewGrantee(&Grantee{
 		Name:          "Caio",
@@ -226,25 +142,4 @@ func TestNewGranteeWithoutAddress(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Nil(t, grantee)
 	assert.Equal(t, ErrAddressRequired, err)
-}
-
-func TestNewGranteeWithoutNeighborhood(t *testing.T) {
-	grantee, err := NewGrantee(&Grantee{
-		Name:          "Caio",
-		CPF:           "929.500.850-24",
-		Birthday:      "07/08/97",
-		MaritalStatus: MaritalStatus("solteiro"),
-		Occupation:    "Desempregado",
-		FamilyCount:   0,
-		PhoneNumber:   "(81)123456789",
-		NIS:           "1234567891011",
-		Address:       "Rua dos Bobos, n 0",
-		Neighborhood:  "",
-		IsRuralArea:   false,
-		Delivered:     false,
-	})
-
-	assert.NotNil(t, err)
-	assert.Nil(t, grantee)
-	assert.Equal(t, ErrNeighborhoodRequired, err)
 }
