@@ -51,3 +51,14 @@ func (g *Grantee) Delete(cpf string) error {
 
 	return g.DB.Delete(grantee).Error
 }
+
+func (g *Grantee) Deliver(cpf string) error {
+	grantee, err := g.FindByCPF(cpf)
+	if err != nil {
+		return entity.ErrGranteeNotFound
+	}
+
+	grantee.Delivered = true
+
+	return g.DB.Save(grantee).Error
+}

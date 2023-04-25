@@ -177,3 +177,43 @@ func TestDeleteNotExistantGrantee(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Equal(t, entity.ErrGranteeNotFound.Error(), err.Error())
 }
+
+func TestDeliverToGrantee(t *testing.T) {
+	db, err := createInMemoryDatabase(t, &entity.Grantee{})
+	assert.Nil(t, err)
+
+	g := &entity.Grantee{
+		Name:          "Cesar",
+		CPF:           "602.305.720-90",
+		Address:       "Rua dos bobos",
+		Neighborhood:  "Vila do Chaves",
+		MaritalStatus: entity.MaritalStatus("solteiro"),
+		IsRuralArea:   false,
+		Delivered:     false,
+	}
+
+	grantee, _ := entity.NewGrantee(g)
+
+	granteeDB := NewGrantee(db)
+	err = granteeDB.Create(grantee)
+	assert.Nil(t, err)
+
+	err = granteeDB.Deliver(grantee.CPF)
+	assert.Nil(t, err)
+
+	var granteeFound entity.Grantee
+	err = db.First(&granteeFound, "id = ?", grantee.ID).Error
+	assert.Nil(t, err)
+
+	assert.True(t, granteeFound.Delivered)
+}
+
+func TestDeliverToNonExistantGrantee(t *testing.T) {
+	db, err := createInMemoryDatabase(t, &entity.Grantee{})
+	assert.Nil(t, err)
+
+	granteeDB := NewGrantee(db)
+	err = granteeDB.Deliver("602.305.720-90")
+	assert.NotNil(t, err)
+	assert.Equal(t, entity.ErrGranteeNotFound.Error(), err.Error())
+}
